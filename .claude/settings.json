@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Memory System Active ===\nStart by reading memory/profile.md and memory/tasks.md to load context.\nThen ask: What do you want to work on today?'"
+          }
+        ]
+      }
+    ]
+  }
+}
