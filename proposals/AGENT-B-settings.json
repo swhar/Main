@@ -1,0 +1,70 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Memory System Active ===\nStart by reading memory/profile.md and memory/tasks.md to load context.\nThen ask: What do you want to work on today?'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[context] today=$(date +%Y-%m-%d) | profile=memory/profile.md | tasks=memory/tasks.md | decisions=memory/decisions.md\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if grep -q 'memory/decisions.md' <<< \"$CLAUDE_TOOL_INPUT$CLAUDE_FILE_PATHS\" 2>/dev/null; then echo '[decisions.md edited] Verify entry uses format from prompts/elite-techniques.md: Date / Decision / Context / Rationale / Next review.'; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Close the loop ===\nBefore stopping: anything from this turn worth saving? (decision, learning, task, profile change)\nIf yes -> run /remember <thing>. If task state changed -> update memory/tasks.md.'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Session Ending — Memory Discipline Check ===\n1. Did any decisions get made this session? -> /remember (decisions.md)\n2. Did task state change? -> update memory/tasks.md\n3. Any insights worth keeping? -> /remember (learnings.md)\n4. Profile/goals shift? -> update memory/profile.md\nSee CLAUDE.md > Memory discipline.'"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== PreCompact Snapshot Reminder ===\nContext is about to compress. Before losing detail:\n- Append any unrecorded decisions to memory/decisions.md\n- Append any open tasks to memory/tasks.md\n- Append key insights to memory/learnings.md\nCompacted summaries lose nuance — written memory does not.'"
+          }
+        ]
+      }
+    ]
+  }
+}
