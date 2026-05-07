@@ -30,6 +30,7 @@ Reference these as needed:
 | `/research <topic>` | Deep research workflow → saves to `knowledge/` |
 | `/strategy <decision>` | Walk through a decision with structured frameworks |
 | `/remember <thing>` | Classify and save something to the right memory file |
+| `/news-update` | Morning news brief: headlines, tech/AI, markets, personalized tips |
 | `/recall <query>` | Retrieve relevant memory entries |
 
 ---
