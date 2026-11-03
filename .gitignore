@@ -1,0 +1,27 @@
+# Secrets and credentials: never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.keystore
+credentials*.json
+secrets*.json
+service-account*.json
+.netrc
+.npmrc
+.pypirc
+
+# Local-only Claude settings (may contain personal paths or tokens)
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
