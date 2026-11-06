@@ -31,6 +31,7 @@ Reference these as needed:
 | `/strategy <decision>` | Walk through a decision with structured frameworks |
 | `/remember <thing>` | Classify and save something to the right memory file |
 | `/recall <query>` | Retrieve relevant memory entries |
+| `security-audit` (skill) | Cloudflare's source-first security audit workflow. Triggers on "security audit this codebase" etc. Guidance mode by default; full 6-phase audit only on explicit request. Vendored from cloudflare/security-audit-skill @ c1c8a8c, MIT. |
 
 ---
 
@@ -57,4 +58,5 @@ projects/        Per-project context files
 knowledge/       Research outputs, reference docs, saved notes
 prompts/         Framework and technique reference documents
 .claude/commands/ Slash command definitions
+.claude/skills/   Vendored skills (security-audit)
 ```
